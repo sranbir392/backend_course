@@ -15,7 +15,8 @@ getAllCourses = async (req, res) => {
     try {
       let id=req.params.id;
       
-      let temp = await UnitToCourseModel.find({courseID:id}).populate("courseID");
+      let temp = await UnitToCourseModel.find({ courseID: id }).populate('courseID') // Populate the courseID field with course details
+      
       res.status(200).json({
         isError:false,
         // courseData:r,
