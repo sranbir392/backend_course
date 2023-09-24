@@ -14,11 +14,11 @@ getAllCourses = async (req, res) => {
   getCourseByID=async (req, res) => {
     try {
       let id=req.params.id;
-      let r=await CourseModel.find(id);
-      let temp = await UnitToCourseModel.find({courseID:id});
+      
+      let temp = await UnitToCourseModel.find({courseID:id}).populate("courseID");
       res.status(200).json({
         isError:false,
-        courseData:r,
+        // courseData:r,
         courseDescription:temp,
       });
     } catch (err) {
