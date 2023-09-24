@@ -1,4 +1,4 @@
-const { CourseModel } = require("../Schemas");
+const { CourseModel,UnitToCourseModel } = require("../Schemas");
 
 getAllCourses = async (req, res) => {
     try {
@@ -14,7 +14,7 @@ getAllCourses = async (req, res) => {
   getCourseByID=async (req, res) => {
     try {
       let id=req.params.id;
-      let temp = await CourseModel.find({_id:id});
+      let temp = await UnitToCourseModel.find({courseID:id});
       res.status(200).json(temp);
     } catch (err) {
       res.status(500).json({
